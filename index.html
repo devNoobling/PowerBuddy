@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       </head>
       
     <body>
@@ -25,78 +26,27 @@
                </nav>
         </div>
 
-        <div id="slogan">
-            <div id="arrow-left" class="arrow"></div>
-            <div id="slider">
-                <div class="slide slide1">
-                    <div class="slide-content">
-                        <span>Image One</span>
-                    </div>
-                </div>
-                <div class="slide slide2">
-                    <div class="slide-content">
-                        <span>Image Two</span>
-                    </div>
-                </div>
-                <div class="slide slide3">
-                    <div class="slide-content">
-                        <span>Image Three</span>
-                    </div>
-                </div>
-            </div>
-            <div id="arrow-right" class="arrow"></div>
+        <div class="w3-content w3-section" style="max-width: 100%;">
+            <img class="mySlides w3-animate-right" src="coverphoto1.jpg" style="width: 100%">
+            <img class="mySlides w3-animate-right" src="coverphoto2.jpg" style="width: 100%;">
+            <img class="mySlides w3-animate-right" src="coverphoto3.jpg" style="width: 100%;">
         </div>
-
         <script>
-            let sliderImages = document.querySelectorAll('.slide'),
-                arrowLeft = document.querySelector('#arrow-left'),
-                arrowRight = document.querySelector('#arrow-right'),
-                current = 0;
+            var myIndex = 0;
+            carousel();
             
-            //clears all images
-            function reset(){
-               for(let i = 0; i < sliderImages.length; i++){
-                sliderImages[i].style.display = 'none';
-               } 
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 10000);    
             }
-            
-            //init slider
-            function startSlide(){
-                reset();
-                sliderImages[0].style.display = 'block';
-            }
-
-            //show previous
-            function slideLeft(){
-                reset();
-                sliderImages[current - 1].style.display = 'block';
-                current--;
-            }
-
-            //show next
-            function slideRight(){
-                reset();
-                sliderImages[current + 1].style.display = 'block';
-                current++;
-            }
-
-            //left arrow click
-            arrowLeft.addEventListener('click', function(){
-                if(current === 0){
-                    current = sliderImages.length;
-                }
-                slideLeft();
-            })
-
-            //right arrow click
-            arrowRight.addEventListener('click', function(){
-                if(current == sliderImages.length - 1){
-                    current = -1
-                }
-                slideRight();
-            })
-
-        </script>
+            </script>
 
         <div class="partnerships">
             <h5>Check out our partners</h5>
